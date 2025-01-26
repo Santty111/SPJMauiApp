@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SPJMauiApp.MainPage">
+
+    <StackLayout>
+        <Label Text= "Ejemplo de app y API"
+            HorizontalOptions="Center"
+            VerticalOptions="CenterAndExpand"/>
+        <Button Text="Llamar API" 
+                Clicked="Button_Clicked" 
+                HorizontalOptions="Center"/>
+        <ListView x:Name="listView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="10">
+
+                            <Image Source="{Binding imagePath}" 
+                           WidthRequest="80" 
+                           HeightRequest="80" 
+                           Aspect="AspectFill" />
+
+                            <Label Text="{Binding marca}" 
+                           FontSize="Medium" 
+                           TextColor="Black" />
+
+                            <Label Text="{Binding modelo}" 
+                           FontSize="Small" 
+                           TextColor="Gray" />
+
+                            <Label Text="{Binding usado, StringFormat='Usado: {0}'}"
+                           FontSize="Small" 
+                           TextColor="Blue" />
+                            
+                            <Label Text="{Binding precio, StringFormat='Precio: {0:C}'}"
+                           FontSize="Small" 
+                           TextColor="Green" />
+
+                            <Label Text="{Binding iva, StringFormat='IVA: {0:C}'}"
+                           FontSize="Small" 
+                           TextColor="Orange" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
