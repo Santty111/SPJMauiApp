@@ -16,6 +16,7 @@ namespace SPJMauiApp
                 });
 
 
+
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
