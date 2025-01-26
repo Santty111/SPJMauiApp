@@ -14,7 +14,7 @@ namespace SPJMauiApp
         private void Button_Clicked(object sender, EventArgs e)
         {
             var client = new HttpClient();
-            client.BaseAddress = new Uri("https://localhost:7171/api/");
+            client.BaseAddress = new Uri("https://localhost:7188/api/");
 
             var response = client.GetAsync("Catalogo").Result;
             if (response.IsSuccessStatusCode) {
