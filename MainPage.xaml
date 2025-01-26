@@ -3,43 +3,84 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SPJMauiApp.MainPage">
 
-    <StackLayout>
-        <Label Text= "Ejemplo de app y API"
-            HorizontalOptions="Center"
-            VerticalOptions="CenterAndExpand"/>
-        <Button Text="Llamar API" 
+    <StackLayout Padding="20">
+        <!-- Título y bienvenida (centrado) -->
+        <Label Text="Bienvenido, descubre el catálogo que tenemos para ti" 
+               HorizontalOptions="Center" 
+               VerticalOptions="Center" 
+               FontSize="Large" 
+               FontAttributes="Bold" 
+               TextColor="Black"
+               Margin="0,20"/>
+
+        <!-- Botón de acción -->
+        <Button Text="Descubrir" 
                 Clicked="Button_Clicked" 
-                HorizontalOptions="Center"/>
-        <ListView x:Name="listView">
+                HorizontalOptions="Center" 
+                BackgroundColor="#4CAF50" 
+                TextColor="White"
+                Padding="15" 
+                CornerRadius="10"/>
+
+        <!-- Listado de items -->
+        <ListView x:Name="listView" Margin="0,20">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal" Padding="10">
+                        <StackLayout Padding="10" Spacing="10" BackgroundColor="#f9f9f9">
 
-                            <Image Source="{Binding imagePath}" 
-                           WidthRequest="80" 
-                           HeightRequest="80" 
-                           Aspect="AspectFill" />
+                            <!-- Información del catálogo -->
+                            <StackLayout VerticalOptions="Center" Padding="10">
 
-                            <Label Text="{Binding marca}" 
-                           FontSize="Medium" 
-                           TextColor="Black" />
+                                <!-- Cuadro para Marca -->
+                                <Frame Padding="10" BorderColor="#4CAF50" BackgroundColor="#e8f5e9" CornerRadius="8">
+                                    <Label Text="{Binding marca}" 
+                                           FontSize="Medium" 
+                                           TextColor="Black" 
+                                           FontAttributes="Bold"/>
+                                </Frame>
 
-                            <Label Text="{Binding modelo}" 
-                           FontSize="Small" 
-                           TextColor="Gray" />
+                                <!-- Cuadro para Modelo -->
+                                <Frame Padding="10" BorderColor="#9E9E9E" BackgroundColor="#f1f1f1" CornerRadius="8" Margin="0,5">
+                                    <Label Text="{Binding modelo}" 
+                                           FontSize="Small" 
+                                           TextColor="Gray" />
+                                </Frame>
 
-                            <Label Text="{Binding usado, StringFormat='Usado: {0}'}"
-                           FontSize="Small" 
-                           TextColor="Blue" />
-                            
-                            <Label Text="{Binding precio, StringFormat='Precio: {0:C}'}"
-                           FontSize="Small" 
-                           TextColor="Green" />
+                                <!-- Cuadro para Usado -->
+                                <Frame Padding="10" BorderColor="#2196F3" BackgroundColor="#e3f2fd" CornerRadius="8" Margin="0,5">
+                                    <Label Text="{Binding usado, StringFormat='Usado: {0}'}"
+                                           FontSize="Small" 
+                                           TextColor="Blue" />
+                                </Frame>
 
-                            <Label Text="{Binding iva, StringFormat='IVA: {0:C}'}"
-                           FontSize="Small" 
-                           TextColor="Orange" />
+                                <!-- Cuadro para Precio -->
+                                <Frame Padding="10" BorderColor="#4CAF50" BackgroundColor="#e8f5e9" CornerRadius="8" Margin="0,5">
+                                    <Label Text="{Binding precio, StringFormat='Precio: {0:C}'}"
+                                           FontSize="Small" 
+                                           TextColor="Green" />
+                                </Frame>
+
+                                <!-- Cuadro para IVA -->
+                                <Frame Padding="10" BorderColor="#9C27B0" BackgroundColor="#f3e5f5" CornerRadius="8" Margin="0,5">
+                                    <Label Text="{Binding iva, StringFormat='IVA: {0}%'}"
+                                           FontSize="Small" 
+                                           TextColor="Purple" />
+                                </Frame>
+                            </StackLayout>
+                            <Button Text="Ver Imagen" 
+                            HorizontalOptions="Center" 
+                            Command="{Binding ShowImageCommand}" 
+                            CommandParameter="{Binding .}" />
+
+                            <!-- Imagen, visibilidad controlada por la propiedad IsImageVisible -->
+                            <Image IsVisible="{Binding IsImageVisible}">
+                                <Image.Source>
+                                    <UriImageSource Uri="{Binding ImagePath}" CachingEnabled="True" />
+                                </Image.Source>
+                            </Image>
+
+
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
