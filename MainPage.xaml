@@ -3,7 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SPJMauiApp.MainPage">
 
+   
+
     <StackLayout Padding="20">
+        
         <!-- Título y bienvenida (centrado) -->
         <Label Text="Bienvenido, descubre el catálogo que tenemos para ti" 
                HorizontalOptions="Center" 

@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using SPJMauiApp.Models;
-using SPJMauiApp.ViewModels;
 
 namespace SPJMauiApp
 {
@@ -10,7 +9,7 @@ namespace SPJMauiApp
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = new CatalogoViewModel();
+
         }
 
         private void Button_Clicked(object sender, EventArgs e)

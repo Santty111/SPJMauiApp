@@ -7,9 +7,12 @@
     Shell.FlyoutBehavior="Disabled"
     Title="SPJMauiApp">
 
-    <ShellContent
-        Title="Home"
+        <ShellContent
+        Title="Api local"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+
+    
+
 
 </Shell>
